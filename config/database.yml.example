@@ -3,21 +3,21 @@ development:
   encoding: unicode
   database: cahoot_development
   pool: 5
-  username: kimcooperrider
-  password: spooner5890
+  username: root
+  password:
 
 test:
   adapter: postgresql
   encoding: unicode
   database: cahoot_test
   pool: 5
-  username: kimcooperrider
-  password: spooner5890
+  username: root
+  password:
 
 production:
   adapter: postgresql
   encoding: unicode
   database: cahoot_production
   pool: 5
-  username: kimcooperrider
-  password: spooner5890
+  username: root
+  password:

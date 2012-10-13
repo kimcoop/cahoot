@@ -1,11 +1,14 @@
 source 'https://rubygems.org'
 
-gem 'rails', '3.2.8'
+gem 'rails'
 
-# Bundle edge Rails instead:
-# gem 'rails', :git => 'git://github.com/rails/rails.git'
+gem 'pg'
+gem 'activeadmin'
 
-gem 'sqlite3'
+#rack servers
+gem 'puma'
+gem 'unicorn'
+gem 'devise'
 
 
 # Gems used only for assets and not required
@@ -13,26 +16,33 @@ gem 'sqlite3'
 group :assets do
   gem 'sass-rails',   '~> 3.2.3'
   gem 'coffee-rails', '~> 3.2.1'
-
-  # See https://github.com/sstephenson/execjs#readme for more supported runtimes
-  # gem 'therubyracer', :platforms => :ruby
-
   gem 'uglifier', '>= 1.0.3'
+  gem 'font-awesome-sass-rails'
 end
 
 gem 'jquery-rails'
 
-# To use ActiveModel has_secure_password
-# gem 'bcrypt-ruby', '~> 3.0.0'
+gem "haml", ">= 3.1.6"
+gem "haml-rails", ">= 0.3.4", :group => :development
+gem "bootstrap-sass", ">= 2.0.3"
 
-# To use Jbuilder templates for JSON
-# gem 'jbuilder'
+group :development, :test do
+  gem 'quiet_assets'
+  gem 'rspec-rails', '~> 2.10.1'
+  gem 'foreman'
+  gem 'capistrano'
+  gem 'capistrano-ext'
+  gem 'capistrano-resque', git: 'git@github.com:softr8/capistrano-resque.git', branch: 'resque_sheduler'
+  gem 'capistrano-unicorn'
+  gem 'capistrano-rvm'
+  gem 'rvm'
+  gem 'pry'
+  gem 'debugger'
+end
 
-# Use unicorn as the app server
-# gem 'unicorn'
-
-# Deploy with Capistrano
-# gem 'capistrano'
-
-# To use debugger
-# gem 'debugger'
+# add any gems that should be available only to the console
+group :console do
+  gem 'wirb'
+  gem 'hirb-unicode'
+  gem 'awesome_print', :require => 'ap'
+end
