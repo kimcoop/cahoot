@@ -1,15 +1,19 @@
 / %p#notice= notice
+.container
+	.row
+		.span8
+			%h2
+				= @list.name
+			%p= "Created by #{@list.user.full_name}" 
+			%p= @list.description
 
-%p
-  %b Name:
-  = @list.name
-%p
-  %b Description:
-  = @list.description
-%p
-  %b Created By:
-  = @list.user.full_name
+	.row
+		.span8
+			- @list.list_items.each do |list_item|
+				%h3= list_item.name
 
-= link_to 'Edit', edit_list_path(@list)
-\|
-= link_to 'Back', lists_path
+	.row
+		.span12
+			= link_to 'Edit', edit_list_path(@list)
+			\|
+			= link_to 'Back', lists_path

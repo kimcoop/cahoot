@@ -1,4 +1,6 @@
 class ListItem < ActiveRecord::Base
+  #before_filter :find_list
+
   attr_accessible :description, :name, :owner_id, :user_id, :list_id, :state
   validates :name, presence: true
   belongs_to :user
@@ -13,4 +15,9 @@ class ListItem < ActiveRecord::Base
   	options = [["Unassigned", :unassigned], ["Assigned", :assigned], ["Completed", :completed]]
   end
 
+  protected
+
+  def find_list
+    @list = List.find params[:list_id]
+  end
 end

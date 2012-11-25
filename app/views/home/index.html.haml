@@ -1,35 +1,37 @@
 
 .container
-	.row
-		.span8
-			%h1 Your Dashboard
+	- if user_signed_in?
+		.row
+			.span8
+				%h1 Your Dashboard
+		.row
+			.span6
+				.well
+					%h3 
+						Items Assigned to You
+					- if current_user.list_items.count > 0
+						%table.table
+							%thead
+								%th Item
+								%th List
+							- current_user.list_items.each do |list_item|
+								%tr
+									%td= link_to list_item.name, [list_item.list, list_item]
+									%td= list_item.list.name
+					- else
+						%p No list items are assigned to you
 
-	.row
-		.span6
-			.well
-				%h3 
-					Items Assigned to You
-					%small= link_to "View All Items", list_items_path
-				- if current_user.list_items.count > 0
-					%table.table
-						- current_user.list_items.each do |list_item|
-							%tr
-								%td= link_to list_item.name, list_item
-								%td= list_item.description #change this
-				- else
-					%p No list items are assigned to you
-
-		.span6
-			.well
-				%h3 Your Lists
-				- if current_user.has_lists?
-					%table.table
-						- current_user.lists.each do |list|
-							%tr
-								%td= link_to list.name, list
-								%td= "#{list.list_items.count} items (#{list.unassigned_items_count} unassigned, #{list.completed_items_count} completed)" 
-				- else
-					%p 
-						You don't have any lists yet :( Why don't you
-						=link_to "create one now", new_list_path
-						?
+			.span6
+				.well
+					%h3 Your Lists
+					- if current_user.has_lists?
+						%table.table
+							- current_user.lists.each do |list|
+								%tr
+									%td= link_to list.name, list
+									%td= "#{list.list_items.count} items (#{list.unassigned_items_count} unassigned, #{list.completed_items_count} completed)" 
+					- else
+						%p 
+							You don't have any lists yet :( Why don't you
+							=link_to "create one now", new_list_path
+							?

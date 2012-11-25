@@ -5,8 +5,8 @@ class User < ActiveRecord::Base
          :recoverable, :rememberable, :trackable, :validatable
 
   attr_accessible :email, :password, :password_confirmation, :first, :last
-  has_many :list_items
   has_many :lists
+  has_many :list_items, through: :lists
 
 
   def has_lists?

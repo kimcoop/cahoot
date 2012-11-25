@@ -21,11 +21,7 @@
       %td= list_item.user.full_name unless list_item.user_id.nil?
       /%td= list_item.owner.full_name
       %td= list_item.owner_id
-      %td= list_item.created_at
-      %td= link_to 'Show', list_item
+      %td= list_item.created_at.strftime('%b %d, %Y')
+      %td= link_to 'Show', list_list_item_path(list_item)
       %td= link_to 'Edit', edit_list_item_path(list_item)
       %td= link_to 'Delete', list_item, method: :delete, data: { confirm: 'Are you sure?' }
-
-%br
-
-= link_to 'New List Item', new_list_item_path
