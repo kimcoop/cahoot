@@ -1,27 +1,21 @@
 
 .container
 	.row
-		.span12
-			%h1 Welcome.
+		.span8
+			%h1 Your Dashboard
+		.span2= link_to "New List <i class='icon-plus-sign'></i>".html_safe, new_list_path
+		.span2= link_to "New Item <i class='icon-plus-sign'></i>".html_safe, new_list_item_path
+
 
 	.row
-		.span12
-			.well
-				%p Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-				tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-				quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-				consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
-				cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
-				proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-
-	.row
-		.span6
-			.well
-				%h3 Your Lists
-				%p Lorem ipsum dolor sit amet, consectetuer adipiscing elit.
 		.span6
 			.well
 				%h3 
-					New List
-					%i.icon-plus-sign
-				%p Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Lorem ipsum dolor sit amet, consectetuer adipiscing elit.
+					Items Assigned to You
+					%small= link_to "View All Items", list_items_path
+				%p Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus.
+		.span6
+			.well
+				%h3 
+					=link_to "Your Lists", lists_path
+				%p Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus.

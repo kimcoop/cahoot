@@ -1,4 +1,4 @@
-%p#notice= notice
+/ %p#notice= notice
 
 %p
   %b Name:
@@ -11,7 +11,7 @@
   = @list_item.user_id
 %p
   %b Owner:
-  = @list_item.owner_id
+  = @list_item.owner_id || "Unassigned"
 
 = link_to 'Edit', edit_list_item_path(@list_item)
 \|

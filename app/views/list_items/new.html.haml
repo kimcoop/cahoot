@@ -1,5 +1,15 @@
-%h1 New list_item
+%h1 New List Item
 
-= render 'form'
+.container
+	.row
+		.span12
+			= simple_form_for @list_item do |f|
+				= f.input :name
+				= f.input :description
+				=	f.association :owner, collection: User.all(order: 'first').each.map(&:first), prompt: "Assign Item To"
+				= f.button :submit
 
-= link_to 'Back', list_items_path
+
+			= link_to 'Show', @list_item
+			\|
+			= link_to 'Back', list_items_path

@@ -1,0 +1,14 @@
+%h1 New List
+
+.container
+	.row
+		.span12
+			= simple_form_for @list do |f|
+				= f.input :name
+				= f.input :description
+				= f.button :submit
+
+
+			= link_to 'Show', @list
+			\|
+			= link_to 'Back', lists_path
