@@ -1,14 +1,15 @@
 .container
   .row
     .span12
-      %h1 List Items
+      %h1 Items
 
 %table.table.table-bordered.table-hover
   %tr
     %th Name
     %th Description
-    %th User
-    %th Owner
+    %th Created By
+    %th Assigned To
+    %th Created On
     %th
     %th
     %th
@@ -17,8 +18,10 @@
     %tr
       %td= list_item.name
       %td= list_item.description
-      %td= list_item.user_id
+      %td= list_item.user.full_name unless list_item.user_id.nil?
+      /%td= list_item.owner.full_name
       %td= list_item.owner_id
+      %td= list_item.created_at
       %td= link_to 'Show', list_item
       %td= link_to 'Edit', edit_list_item_path(list_item)
       %td= link_to 'Delete', list_item, method: :delete, data: { confirm: 'Are you sure?' }

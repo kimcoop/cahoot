@@ -1,14 +1,18 @@
-%h1 New List Item
+%h1 New Item
 
 .container
 	.row
 		.span12
 			= simple_form_for @list_item do |f|
-				= f.input :name
-				= f.input :description
-				=	f.association :owner, collection: User.all(order: 'first').each.map(&:first), prompt: "Assign Item To"
-				= f.button :submit
 
+				= f.input :name, input_html: {class: "span5"}
+				= f.input :description, input_html: {class: "span5", rows: 2}
+
+				%fielset
+					= f.input :state, label: "State", collection: ListItem.state_options_for_select, default: 3
+
+				=	f.association :owner, collection: User.all(order: 'first').each.map(&:first), prompt: "Select User", label: "Assign Item To"
+				= f.button :submit
 
 			= link_to 'Show', @list_item
 			\|

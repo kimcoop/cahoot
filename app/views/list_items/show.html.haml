@@ -5,13 +5,13 @@
   = @list_item.name
 %p
   %b Description:
-  = @list_item.description
+  = @list_item.description || "None"
 %p
-  %b User:
-  = @list_item.user_id
+  %b Created By:
+  = @list_item.user.full_name
 %p
-  %b Owner:
-  = @list_item.owner_id || "Unassigned"
+  %b Assigned To:
+  = @list_item.owner_id
 
 = link_to 'Edit', edit_list_item_path(@list_item)
 \|

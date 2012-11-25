@@ -10,6 +10,8 @@
 					= f.input :name, label: "Name"
 				%fieldset
 					= f.input :description, label: "Description"
+				%fielset
+					= f.input :state, label: "State", collection: ListItem.state_options_for_select, prompt: "Select State"
 				%fieldset
 					=	f.association :owner, collection: User.all(order: 'first').each.map(&:first), prompt: "Assign Item To"
 				= f.button :submit

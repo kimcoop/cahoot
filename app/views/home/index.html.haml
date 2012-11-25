@@ -3,9 +3,6 @@
 	.row
 		.span8
 			%h1 Your Dashboard
-		.span2= link_to "New List <i class='icon-plus-sign'></i>".html_safe, new_list_path
-		.span2= link_to "New Item <i class='icon-plus-sign'></i>".html_safe, new_list_item_path
-
 
 	.row
 		.span6
@@ -13,9 +10,26 @@
 				%h3 
 					Items Assigned to You
 					%small= link_to "View All Items", list_items_path
-				%p Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus.
+				- if current_user.list_items.count > 0
+					%table.table
+						- current_user.list_items.each do |list_item|
+							%tr
+								%td= link_to list_item.name, list_item
+								%td= list_item.description #change this
+				- else
+					%p No list items are assigned to you
+
 		.span6
 			.well
-				%h3 
-					=link_to "Your Lists", lists_path
-				%p Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus.
+				%h3 Your Lists
+				- if current_user.has_lists?
+					%table.table
+						- current_user.lists.each do |list|
+							%tr
+								%td= link_to list.name, list
+								%td= "#{list.list_items.count} items (#{list.unassigned_items_count} unassigned, #{list.completed_items_count} completed)" 
+				- else
+					%p 
+						You don't have any lists yet :( Why don't you
+						=link_to "create one now", new_list_path
+						?

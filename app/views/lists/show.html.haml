@@ -1,4 +1,4 @@
-%p#notice= notice
+/ %p#notice= notice
 
 %p
   %b Name:
@@ -7,11 +7,8 @@
   %b Description:
   = @list.description
 %p
-  %b User:
-  = @list.user_id
-%p
-  %b Owner:
-  = @list.owner_id
+  %b Created By:
+  = @list.user.full_name
 
 = link_to 'Edit', edit_list_path(@list)
 \|
