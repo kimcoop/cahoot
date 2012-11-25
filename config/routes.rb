@@ -1,7 +1,7 @@
 Cahoot::Application.routes.draw do
 
   resources :lists do
-  	resources :list_items
+  	resources :items
   end
 
   devise_for :users

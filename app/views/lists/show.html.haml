@@ -9,8 +9,8 @@
 
 	.row
 		.span8
-			- @list.list_items.each do |list_item|
-				%h3= list_item.name
+			- @list.items.each do |item|
+				%h3= item.name
 
 	.row
 		.span12

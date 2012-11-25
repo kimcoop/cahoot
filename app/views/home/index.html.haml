@@ -9,15 +9,15 @@
 				.well
 					%h3 
 						Items Assigned to You
-					- if current_user.list_items.count > 0
+					- if current_user.items.count > 0
 						%table.table
 							%thead
 								%th Item
 								%th List
-							- current_user.list_items.each do |list_item|
+							- current_user.items.each do |item|
 								%tr
-									%td= link_to list_item.name, [list_item.list, list_item]
-									%td= list_item.list.name
+									%td= link_to item.name, [item.list, item]
+									%td= item.list.name
 					- else
 						%p No list items are assigned to you
 
@@ -29,7 +29,7 @@
 							- current_user.lists.each do |list|
 								%tr
 									%td= link_to list.name, list
-									%td= "#{list.list_items.count} items (#{list.unassigned_items_count} unassigned, #{list.completed_items_count} completed)" 
+									%td= "#{list.items.count} items (#{list.unassigned_items_count} unassigned, #{list.completed_items_count} completed)" 
 					- else
 						%p 
 							You don't have any lists yet :( Why don't you

@@ -6,7 +6,7 @@ class User < ActiveRecord::Base
 
   attr_accessible :email, :password, :password_confirmation, :first, :last
   has_many :lists
-  has_many :list_items, through: :lists
+  has_many :items, through: :lists
 
 
   def has_lists?

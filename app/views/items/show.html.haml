@@ -1,0 +1,18 @@
+/ %p#notice= notice
+
+%p
+  %b Name:
+  = @item.name
+%p
+  %b Description:
+  = @item.description || "None"
+%p
+  %b Created By:
+  = @item.user.full_name
+%p
+  %b Assigned To:
+  = @item.owner_id
+
+= link_to 'Edit', edit_list_item_path([@list, @item])
+\|
+= link_to 'Back', root_path

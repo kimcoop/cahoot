@@ -1,0 +1,27 @@
+.container
+  .row
+    .span12
+      %h1 Items
+
+%table.table.table-bordered.table-hover
+  %tr
+    %th Name
+    %th Description
+    %th Created By
+    %th Assigned To
+    %th Created On
+    %th
+    %th
+    %th
+
+  - @items.each do |item|
+    %tr
+      %td= item.name
+      %td= item.description
+      %td= item.user.full_name unless item.user_id.nil?
+      /%td= item.owner.full_name
+      %td= item.owner_id
+      %td= item.created_at.strftime('%b %d, %Y')
+      %td= link_to 'Show', item_path(item)
+      %td= link_to 'Edit', edit_item_path(item)
+      %td= link_to 'Delete', item, method: :delete, data: { confirm: 'Are you sure?' }

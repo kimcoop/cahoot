@@ -1,11 +1,24 @@
-= simple_form_for(@list) do |f|
-  = f.error_notification
+= simple_form_for @list do |f|
+	.row
+		.span4
+			%fieldset
+				= f.input :name, label: 'Name', input_html: {class: "span4"}
+			%fieldset
+				= f.input :description, label: 'Description', input_html: {class: "span4", rows: 4}
+		.span8
+			=link_to_function '<i class="icon-plus-sign"></i> Add Item'.html_safe, "Cahoot.ListManager.addItemToList()", class: 'btn pull-right'
 
-  .form-inputs
-    = f.input :name
-    = f.input :description
-    = f.input :user_id
-    = f.input :owner_id
+			%table.table.table-bordered
+				%thead
+					%tr
+						%th Name
+						%th Description
+				%tbody
+					- @list.items.each do |item|
+						%tr
+							%td= item.name
+							%td= item.description
 
-  .form-actions
-    = f.button :submit
+	.row
+		.span12
+			= f.button :submit, class: 'btn btn-primary'

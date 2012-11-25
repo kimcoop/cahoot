@@ -1,4 +1,4 @@
-class ListItem < ActiveRecord::Base
+class Item < ActiveRecord::Base
   #before_filter :find_list
 
   attr_accessible :description, :name, :owner_id, :user_id, :list_id, :state

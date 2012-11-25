@@ -3,18 +3,22 @@ class List < ActiveRecord::Base
   validates :name, presence: true
   belongs_to :user
   belongs_to :owner
-  has_many :list_items
+  has_many :items
+
+  def has_items?
+    items.count > 0
+  end
 
   def assigned_items_count
-  	list_items.assigned.count
+  	items.assigned.count
   end
 
   def unassigned_items_count
-  	list_items.unassigned.count
+  	items.unassigned.count
   end
 
   def completed_items_count
-  	list_items.completed.count
+  	items.completed.count
   end
 
 end
