@@ -1,10 +1,9 @@
 Cahoot::Application.routes.draw do
 
-  resources :lists do
-  	resources :items
-  end
-
   devise_for :users
+
+  resources :lists
+  resources :items
 
   root :to => 'home#index'
 

@@ -1,6 +1,5 @@
 class ItemsController < ApplicationController
-  # GET /items
-  # GET /items.json
+
   def index
     @items = Item.where("name like ?", "%#{params[:q]}%")
     respond_to do |format|
@@ -9,8 +8,6 @@ class ItemsController < ApplicationController
     end
   end
 
-  # GET /items/1
-  # GET /items/1.json
   def show
     @item = Item.find params[:id]
 
@@ -40,7 +37,7 @@ class ItemsController < ApplicationController
   # POST /items.json
   def create
     @item = Item.new params[:item]
-    @item.user = current_user
+    #@item.creator = current_user
 
     respond_to do |format|
       if @item.save

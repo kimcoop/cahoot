@@ -41,7 +41,7 @@ class ListsController < ApplicationController
   # POST /lists.json
   def create
     @list = List.new params[:list]
-    @list.user = current_user
+    #@list.creator = current_user
 
     respond_to do |format|
       if @list.save

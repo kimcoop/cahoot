@@ -8,7 +8,7 @@
     .span8
       =link_to_function '<i class="icon-plus-sign"></i> Add Item'.html_safe, "Cahoot.ListManager.addItemToList()", class: 'btn pull-right'
       %p Look for user record in our database:
-      =text_field_tag :user_case_id, {}, { id: 'select-items-for-list', class: 'select-items-for-list', placeholder: 'Find User' }
+      /=f.input :item_ids, {}, { id: 'select-items-for-list', class: 'select-items-for-list', placeholder: 'Find User' }
 
   .row
     .span12

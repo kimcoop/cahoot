@@ -9,22 +9,11 @@
 				.well
 					%h3 
 						Items Assigned to You
-					- if current_user.items.count > 0
-						%table.table
-							%thead
-								%th Item
-								%th List
-							- current_user.items.each do |item|
-								%tr
-									%td= link_to item.name, [item.list, item]
-									%td= item.list.name
-					- else
-						%p No list items are assigned to you
-
+					
 			.span6
 				.well
 					%h3 Your Lists
-					- if current_user.has_lists?
+					- if current_user.lists.count > 0
 						%table.table
 							- current_user.lists.each do |list|
 								%tr

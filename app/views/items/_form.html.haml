@@ -7,18 +7,20 @@
 
 .row
   .span12
-    = simple_form_for [@item.list, @item] do |f|
+    = simple_form_for(@item) do |f|
       %fieldset
         = f.input :name, label: "Name", input_html: {class: "span5"}
       %fieldset
         = f.input :description, label: "Description", input_html: {class: "span5", rows: 2}
-      %fielset
-        = f.input :state, label: "State", collection: Item.state_options_for_select, prompt: "Select State"
-      %fieldset
-        = f.association :owner, collection: User.all(order: 'first').each.map(&:first), prompt: "Assign Item To", label: "Assign Item To"
+      
       = f.button :submit, class: "btn btn-primary"
 
 
-    = link_to 'Show', [@item.list, @item]
+    = link_to 'Show', (@item)
     \|
     = link_to 'Back', root_path
+
+/ %fielset
+/         = f.input :state, label: "State", collection: ListItem.status_options_for_select, prompt: "Select State"
+/       %fieldset
+/         = f.association :owner, collection: User.all(order: 'first').each.map(&:first), prompt: "Assign Item To", label: "Assign Item To"

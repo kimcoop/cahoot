@@ -1,9 +1,11 @@
 class List < ActiveRecord::Base
-  attr_accessible :description, :name, :owner_id, :user_id, :item_tokens
+  attr_accessible :description, :name, :item_tokens, :creator_id
   validates :name, presence: true
-  belongs_to :user
-  belongs_to :owner
-  has_many :items
+  belongs_to :creator
+  has_many :list_items
+  has_many :items, through: :list_items
+  has_many :user_lists
+  has_many :users, through: :user_lists
   attr_reader :item_tokens
 
   def item_tokens=(ids)
@@ -15,6 +17,7 @@ class List < ActiveRecord::Base
   end
 
   def assigned_items_count
+    #TODO:  user counter cache (for this and next two methods)
   	items.assigned.count
   end
 

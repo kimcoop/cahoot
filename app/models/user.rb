@@ -5,16 +5,11 @@ class User < ActiveRecord::Base
          :recoverable, :rememberable, :trackable, :validatable
 
   attr_accessible :email, :password, :password_confirmation, :first, :last
-  has_many :lists
-  has_many :items, through: :lists
-
-
-  def has_lists?
-  	lists.count > 0
-  end
+  has_many :user_lists
+  has_many :lists, through: :user_lists
 
   def full_name
-      "#{first} #{last}"
+    "#{first} #{last}"
   end
 
 end
