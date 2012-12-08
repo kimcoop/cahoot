@@ -14,4 +14,5 @@
 //= require jquery_ujs
 //= require bootstrap
 //= require namespacing
+//= require select2.min.js
 //= require_tree .

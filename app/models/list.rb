@@ -1,9 +1,14 @@
 class List < ActiveRecord::Base
-  attr_accessible :description, :name, :owner_id, :user_id
+  attr_accessible :description, :name, :owner_id, :user_id, :item_tokens
   validates :name, presence: true
   belongs_to :user
   belongs_to :owner
   has_many :items
+  attr_reader :item_tokens
+
+  def item_tokens=(ids)
+    self.item_ids = ids.split(",")
+  end
 
   def has_items?
     items.count > 0

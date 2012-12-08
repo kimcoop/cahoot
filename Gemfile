@@ -25,8 +25,8 @@ gem "haml-rails", ">= 0.3.4", group: :development
 #gem 'twilio-ruby'
 gem 'yaml_db'
 gem 'simple_form'
+gem "select2-rails"
 
-gem 'jquery-rails'
 
 # To use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.0.0'

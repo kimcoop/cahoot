@@ -1,0 +1,31 @@
+= content_for :javascripts do
+
+  :javascript
+      $(function(){
+    	  $('.select-items-for-list').select2({
+          placeholder: "Search for a User Case",
+          minimumInputLength: 1,
+          width: "90%",
+          ajax: {
+            url: "/twilio/user_cases.json"
+            dataType: 'json'
+            data: ( term, page ) -> q: term
+            results: ( data, page ) ->
+              results = { results: [] }
+              $.each data, ( index, data_element ) ->
+                results.results.push data_element.user_case
+              results
+          }
+          initSelection: ( element, callback ) ->
+            $(element).select2 'data', uca.CallCenter.user_case
+          formatResult: ( item ) -> item.name
+          createSearchChoice: ( term ) -> name: term
+          formatSelection: ( item ) ->
+            uca.CallCenter.user_case = item
+            item.name
+         })
+     $('#select-items-for-list').on "change", ( event ) ->
+        console.log( JSON.stringify( { val: event.val, added: event.added, removed: event.removed } ) )
+        console.log "test"
+      })
+
