@@ -1,15 +1,15 @@
-= link_to "Cahoot", root_path, :class => 'brand'
+= link_to "Cahoot", root_path, class: 'brand'
 %ul.nav.pull-right
   %li= link_to '<i class="icon-list-alt"></i> New List'.html_safe, new_list_path
   - if user_signed_in?
     %li
-      = link_to '<i class="icon-cog"></i> Account'.html_safe, edit_user_registration_path
+      = link_to "<i class='icon-cog'></i> #{current_user.email}".html_safe, edit_user_registration_path
   - else
     %li
       = link_to 'Sign up', new_user_registration_path
   - if user_signed_in?
     %li
-      = link_to '<i class="icon-signout"></i> Logout'.html_safe, destroy_user_session_path, :method=>'get'
+      = link_to '<i class="icon-signout"></i> Logout'.html_safe, destroy_user_session_path, method:'get'
   - else
     %li
       = link_to '<i class="icon-signin"></i> Login'.html_safe, new_user_session_path

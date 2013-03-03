@@ -1,15 +1,17 @@
-= simple_form_for @list do |f|
+= simple_form_for @list do |form|
   .row
     .span4
       %fieldset
-        = f.input :name, label: 'Name', input_html: {class: "span4"}
+        = form.input :name, label: 'Name', input_html: {class: "span4"}
       %fieldset
-        = f.input :description, label: 'Description', input_html: {class: "span4", rows: 4}
+        = form.input :description, label: 'Description', input_html: {class: "span4", rows: 4}
     .span8
       =link_to_function '<i class="icon-plus-sign"></i> Add Item'.html_safe, "Cahoot.ListManager.addItemToList()", class: 'btn pull-right'
-      %p Look for user record in our database:
-      /=f.input :item_ids, {}, { id: 'select-items-for-list', class: 'select-items-for-list', placeholder: 'Find User' }
+
+      = form.label :list_items_tokens, 'items'
+      = form.hidden_field :list_items_tokens, id: 'items-select-for-list', class: 'search_items', placeholder: 'Select Your Items'
+
 
   .row
     .span12
-      = f.button :submit, class: 'btn btn-primary'
+      = form.button :submit, class: 'btn btn-primary'

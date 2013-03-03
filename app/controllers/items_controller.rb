@@ -1,4 +1,5 @@
 class ItemsController < ApplicationController
+  before_filter :authenticate_user!, :except => [:index]
 
   def index
     @items = Item.where("name like ?", "%#{params[:q]}%")

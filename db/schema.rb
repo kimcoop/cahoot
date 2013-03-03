@@ -11,16 +11,13 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121208170226) do
+ActiveRecord::Schema.define(:version => 20130303050658) do
 
   create_table "items", :force => true do |t|
     t.string   "name"
     t.text     "description"
-    t.integer  "user_id"
-    t.integer  "owner_id"
     t.datetime "created_at",  :null => false
     t.datetime "updated_at",  :null => false
-    t.string   "state"
     t.integer  "list_id"
   end
 
@@ -29,16 +26,15 @@ ActiveRecord::Schema.define(:version => 20121208170226) do
     t.integer  "item_id"
     t.integer  "assignee_id"
     t.integer  "creator_id"
-    t.integer  "status"
     t.datetime "created_at",  :null => false
     t.datetime "updated_at",  :null => false
+    t.string   "status"
   end
 
   create_table "lists", :force => true do |t|
     t.string   "name"
     t.text     "description"
     t.integer  "creator_id"
-    t.integer  "owner_id"
     t.datetime "created_at",  :null => false
     t.datetime "updated_at",  :null => false
   end

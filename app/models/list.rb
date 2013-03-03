@@ -1,15 +1,24 @@
 class List < ActiveRecord::Base
-  attr_accessible :description, :name, :item_tokens, :creator_id
+  attr_accessible :description,
+   :name,
+   :list_items_tokens,
+   :list_items_attributes
   validates :name, presence: true
-  belongs_to :creator
   has_many :list_items
   has_many :items, through: :list_items
   has_many :user_lists
   has_many :users, through: :user_lists
-  attr_reader :item_tokens
+  attr_reader :list_items_tokens
+  delegate :user, to: :user_lists, method: :creator
 
-  def item_tokens=(ids)
-    self.item_ids = ids.split(",")
+  accepts_nested_attributes_for :list_items, reject_if: lambda { |a| a[:value].blank? }, allow_destroy: true
+
+  def list_items_tokens
+    list_items.map { |list_item| { id: list_item.item_id, name: list_item.name } }
+  end
+
+  def list_items_tokens= ids
+    self.items= Item.find ids.split(',')
   end
 
   def has_items?

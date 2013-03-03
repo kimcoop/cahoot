@@ -1,16 +1,15 @@
 @import "bootstrap";
 @import "bootstrap-responsive";
 @import "variables";
-@import 'font-awesome';
+@import "font-awesome";
 
 body {
   padding-top: 60px;
   font: normal 300 14px/21px "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
-  background-color: $lightBlue;
 }
 
 /* FONT */
-/* ********************************** */
+/* ********************************* */
 
 @font-face {
   font-family: arial;
@@ -22,13 +21,14 @@ body {
 /* ********************************** */
 
 h1, h2, h3, h4, h5 {
-  font-weight: normal;
   margin-bottom: 0.5em;
+  font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  font-weight: 200;
 }
 
 h1, h2 {
-  font-family: times, serif;
-  color: $darkTan;
+  // font-family: times, serif;
+  font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
   line-height: 0.9em;
   letter-spacing: -4px;
 }
@@ -40,7 +40,6 @@ h3, h4, h5 {
 h1 {
   font-size: 5em;
   em {
-    color: $darkPeach;
     font-style: normal;
   }
   strong {
@@ -48,10 +47,8 @@ h1 {
   }
 }
 h2 {
-  color: $darkTan;
   font-size: 3.5em;
   em {
-    color: $darkestTan;
     font-style: normal;
   }
   strong {
@@ -59,7 +56,6 @@ h2 {
   }
   i {
     &.icon-heart, &.icon-lock {
-      color: $lightPeach;
     }
   }
 }
@@ -84,13 +80,11 @@ form {
     margin-bottom: 20px;
   }
   label {
-    font-family: Lucida, "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, sans-serif;
-    color: $darkTan;
+    // font-family: Lucida, "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, sans-serif;
     font-size: 1em;
   }
   legend {
     font-size: 1.2em;
-    color: #8B826D;
     border-bottom-style: dotted;
     border-bottom-color: rgba(0, 0, 0, 0.2);
     margin-bottom: 1em;
@@ -101,14 +95,10 @@ form {
     font-weight: 200;
     font-size: 1.5em;
     line-height: 1;
-    @include border-radius(0);
     padding: 10px 5px;
     height: auto;
-    background-color: $grayTan;
     @include box-shadow(inset 0 0 20px rgba(0,0,0,0.2));
     border-bottom: 1px solid rgba(255,255,255,1);
-    color: $darkTan;
-    @include box-sizing(border-box);
   }
 
   select {
@@ -395,19 +385,10 @@ a.glass-container {
 }
 
 .well {
-  $wellBG: rgba(255,255,255,0.7);
-  $wellBG-Dark: rgba(0,0,0,0.5);
-  $pointerSize: 10px;
-  color: $darkestTan !important;
   p, h1, h2, h3, h4, h5 {
-    color: $darkestTan !important;
   }
-  border: none;
-  background-color: $wellBG;
   @include border-radius(10px);
   @include box-shadow(none);
-  border-top: 1px solid rgba(255,255,255,0.6);
-  border-bottom: 1px solid rgba(0,0,0,0.6);
   position: relative;
   &.dark {
     background-color: #777;
@@ -416,57 +397,10 @@ a.glass-container {
       color: #FFF !important;
     }
     a {
-      color: darken($lightBlue,10%);
-      border-bottom: 1px dotted darken($lightBlue,30%);
       &:hover {
         text-decoration: none;
         border-bottom-color: transparent;
       }
-    }
-    .pointer {
-      border: $pointerSize solid #777;
-    }
-  }
-  .pointer {
-    width: 0;
-    height: 0;
-    border: $pointerSize solid $wellBG;
-    position: absolute;
-    &.up {
-      border-left-color: transparent;
-      border-right-color: transparent;
-      border-top: none;
-      left: 50%;
-      top: -$pointerSize;
-      margin-left: -$pointerSize;
-    }
-    &.down {
-      border-left-color: transparent;
-      border-right-color: transparent;
-      border-bottom: none;
-      left: 50%;
-      bottom: -$pointerSize;
-      margin-left: -$pointerSize;
-    }
-    &.left {
-      border-top-color: transparent;
-      border-bottom-color: transparent;
-      border-left: none;
-      top: 50%;
-      left: -$pointerSize;
-      margin-top: -$pointerSize;
-      &:after {
-        content: '';
-        border-bottom: 1px solid black;
-      }
-    }
-    &.right {
-      border-top-color: transparent;
-      border-bottom-color: transparent;
-      border-right: none;
-      top: 50%;
-      right: -$pointerSize;
-      margin-top: -$pointerSize;
     }
   }
 }

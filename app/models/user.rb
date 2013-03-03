@@ -7,9 +7,11 @@ class User < ActiveRecord::Base
   attr_accessible :email, :password, :password_confirmation, :first, :last
   has_many :user_lists
   has_many :lists, through: :user_lists
+  has_many :list_items, through: :lists
+  has_many :items, through: :list_items
 
-  def full_name
-    "#{first} #{last}"
+  def display_name
+    [ first, last ].join(" ")
   end
 
 end
